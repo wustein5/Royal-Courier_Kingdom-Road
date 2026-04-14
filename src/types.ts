@@ -1,0 +1,78 @@
+export interface Entity {
+  id: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  health: number;
+  maxHealth: number;
+  type: 'player' | 'enemy' | 'projectile' | 'particle' | 'float_text';
+  speed: number;
+}
+
+export interface Player extends Entity {
+  gold: number;
+  weaponLevel: number;
+  bowLevel: number;
+  armorLevel: number;
+  horseLevel: number;
+  isHorseback: boolean;
+  ammo: number;
+  maxAmmo: number;
+  reloadTimer: number;
+  facing: 1 | -1;
+  animFrame: number;
+}
+
+export interface Enemy extends Entity {
+  enemyType: 'robber' | 'archer' | 'boss';
+  attackTimer: number;
+  damage: number;
+  goldValue: number;
+  isWithdrawing?: boolean;
+  hasShot?: boolean;
+  isCharging?: boolean;
+  chargeTimer?: number;
+  spawnSide: 'left' | 'right';
+  animFrame: number;
+  isTelegraphing?: boolean;
+  telegraphTimer?: number;
+}
+
+export interface Projectile extends Entity {
+  owner: 'player' | 'enemy';
+  damage: number;
+  angle: number;
+}
+
+export interface FloatText extends Entity {
+  text: string;
+  color: string;
+  opacity: number;
+  life: number;
+}
+
+export interface SceneryObject {
+  id: string;
+  x: number;
+  y: number;
+  type: 'tree' | 'house' | 'mountain' | 'stream' | 'wrecked_carriage' | 'castle' | 'side_road' | 'road_rut';
+  speed: number;
+  scale: number;
+  rotation?: number;
+}
+
+export interface GameState {
+  distance: number;
+  maxDistance: number;
+  isGameOver: boolean;
+  isPaused: boolean;
+  isShopOpen: boolean;
+  isBossFight: boolean;
+  isKnighting: boolean;
+  isCinematic: boolean;
+  isVictory: boolean;
+  hasStarted: boolean;
+  score: number;
+  level: number;
+}
