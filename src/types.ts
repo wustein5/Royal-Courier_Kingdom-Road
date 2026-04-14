@@ -6,8 +6,10 @@ export interface Entity {
   height: number;
   health: number;
   maxHealth: number;
-  type: 'player' | 'enemy' | 'projectile' | 'particle';
+  type: string;
   speed: number;
+  animFrame?: number;
+  [key: string]: any;
 }
 
 export interface Player extends Entity {
@@ -21,6 +23,7 @@ export interface Player extends Entity {
   maxAmmo: number;
   reloadTimer: number;
   facing: 1 | -1;
+  animFrame: number;
 }
 
 export interface Enemy extends Entity {
@@ -34,6 +37,8 @@ export interface Enemy extends Entity {
   chargeTimer?: number;
   chargeWarningTimer?: number;
   spawnSide: 'left' | 'right';
+  animFrame: number;
+  [key: string]: any;
 }
 
 export interface Projectile extends Entity {
@@ -46,9 +51,10 @@ export interface SceneryObject {
   id: string;
   x: number;
   y: number;
-  type: 'tree' | 'house' | 'mountain' | 'stream' | 'wrecked_carriage' | 'castle' | 'side_road';
+  type: string;
   speed: number;
   scale: number;
+  [key: string]: any;
 }
 
 export interface GameState {
@@ -64,6 +70,7 @@ export interface GameState {
   hasStarted: boolean;
   score: number;
   level: number;
+  [key: string]: any;
 }
 
 export interface FloatText {
@@ -73,5 +80,7 @@ export interface FloatText {
   text: string;
   color: string;
   life: number;
-  vy: number;
+  opacity?: number;
+  vy?: number;
+  [key: string]: any;
 }
